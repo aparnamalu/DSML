@@ -1,0 +1,17 @@
+implement Support Vector Machine (SVM) classification using the Breast Cancer dataset. ALGORITHM
+1. Import required libraries from sklearn: datasets, train_test_split, metrics, and svm. 2. Load the breast cancer dataset using datasets.load_breast_cancer(). 3. Split the dataset into training and testing sets using train_test_split() with 30% test size. 4. Create a Support Vector Machine classifier with a linear kernel using svm.SVC(kernel='linear'). 5. Train the classifier using the training data with fit(). 6. Predict the class labels for the test data using predict(). 7. Print the actual and predicted class labels. 8. Calculate and print performance metrics-accuracy,precision and recall
+PROGRAM
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+from sklearn import svm
+cancer = datasets.load_breast_cancer()
+x_train, x_test, y_train, y_test = train_test_split( cancer.data, cancer.target, test_size=0.3, random_state=109)
+clf = svm.SVC(kernel='linear')
+clf.fit(x_train, y_train)
+y_pred = clf.predict(x_test)
+print("Actual values:", y_test)
+print("Predicted values:", y_pred)
+print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
+print("Precision:", metrics.precision_score(y_test, y_pred))
+print("Recall:", metrics.recall_score(y_test, y_pred))
